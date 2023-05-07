@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세페이지</title>
+</head>
+
+<style>
+    body {
+        background: #7c72a0;
+    }
+    .title {
+        text-align : center;
+    }
+    .content {
+        text-align : center;
+    }
+    .buttons {
+        text-align : center;
+    }
+    .delete {
+        text-decoration: none;
+    }
+    .modify {
+        text-decoration: none;
+    }
+    .img{
+        text-align : center;
+        padding-bottom: 30px;
+    }
+    h1 {
+        color : white;
+    }
+
+    h2 {
+        color : white;
+    }
+    button {
+        width: 200px;
+        border-radius: 20px;
+        border: none;
+        background: #a57fa5;
+        cursor: pointer;
+    }
+
+</style>
+
+<body>
+
+<!--컨트롤러에서 boardView(Model model, Integer id) 모델에다가 해당 id의 board객체 담아서-->
+<!--board를 키값으로 화면에 보냈다. 타임리프로 해당 board키값으로 받아서 출력한거다.-->
+<h1 class="title" th:text="${board.title}">제목</h1>
+<p class="content" th:text="${board.content}">내용</p>
+
+<!--=====================이미지 보기======================-->
+
+<div class="img">
+    <a th:href="@{${board.filepath}}">이미지보기</a>
+</div>
+
+<!--====================================================-->
+<div class="buttons">
+    <a class="delete" th:href="@{/board/delete(id=${board.id})}">
+        <button><h2>삭제하기</h2></button>
+    </a>
+    <a class="modify" th:href="@{/board/modify/{id}(id=${board.id})}">
+        <button><h2>수정하기</h2></button>
+    </a>
+</div>
+
+
+</body>
+</html>

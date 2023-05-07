@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--데이터를 받아와서 처리하는 타임리프 사용-->
+<!-- xmlns:th="http://www.thymeleaf.org" 추가하면 된다.-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시판 목록 페이지</title>
+</head>
+
+<style>
+    body {
+        background: #7c72a0;
+    }
+    tr:nth-child(even) {
+        background-color: #483d6c;
+        text-align : center;
+    }
+    tr:nth-child(odd) {
+        background-color: #a57fa5;
+        text-align : center;
+    }
+    th {
+        background-color: #342F44;
+        color: white;
+    }
+    .noBorder {
+        border:none !important;
+        color : white;
+        height: 40px;
+    }
+    h1 {
+        text-align : center;
+        color: white;
+    }
+    h2 {
+        text-align : center;
+        color: white;
+    }
+    .layout{
+        display: flex;
+        justify-content: center;
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    button {
+        width: 200px;
+        border-radius: 20px;
+        border: none;
+        background: #a57fa5;
+        cursor: pointer;
+    }
+    .writepage{
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        padding-top: 15px;
+    }
+    strong{
+        font-size: 20px;
+        color: #91367a;
+    }
+
+</style>
+
+<body>
+<h1>의엽이 게시판</h1>
+<div class="layout">
+    <table>
+        <thead style="height: 50px">
+        <tr>
+            <th scope="col" style="width : 100px">글번호</th>
+            <th scope="col" style="width : 500px">제목</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <!--th: 는 타임리프를 쓰겠다는거고 each는 반복을 하겠다는 거다.-->
+        <!--controller에서 model.addattribute키값을 list로 주었으니까 화면에서 list로 받으면 해당-->
+        <!--밸류값을 다 사용할수 있다.-->
+        <tr th:each="board : ${list}">
+            <td class="noBorder" th:text="${board.id}">아이디 번호</td>
+            <td class="noBorder">
+                <!--a태그로 href설정해주고 쿼리스트링으로 해당id값을 가져간다.-->
+                <!--이때 th:each로 board전체 리스트를 출력한거고 그 board의 아이디를 타임리프에 담아서 보내준다.-->
+                <a th:href="@{/board/view(id=${board.id})}" th:text="${board.title}"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div style="text-align : center; padding-top: 10px">
+    <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+        <a th:if="${page != nowPage}" th:href="@{/board/list(page = ${page - 1})}" th:text="${page}"></a>
+        <strong th:if="${page == nowPage}" th:text="${page}"></strong>
+    </th:block>
+</div>
+
+<form class="writepage" th:action="@{/board/write}">
+    <button><h2>글 작성하기</h2></button>
+</form>
+
+</body>
+</html>
