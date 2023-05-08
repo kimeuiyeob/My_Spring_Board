@@ -59,12 +59,22 @@ public class BoardController {
 
     //======================페이징 처리==========================
     // @PageableDefault으로 간편하게 페이징 처리한다. page = 0은 1페이지,  size = 게시글 갯수, direction desc로 주어서 마지막에 쓴글이 가장 먼저나오게한다.
-    public String boardList(Model model, @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String boardList(Model model,
+                            @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+                            String searchKeyword) {
         //addAttribute메서드를 통해 키값을 list로 주고 value값을 boardService.showAll()로 주면
         //화면단에서 키값 list를 가지고 해당 데이터값들을 가져올수있다.
 
-//        model.addAttribute("list", boardService.showAll(pageable));
-        Page<Board> list = boardService.showAll(pageable);
+        Page<Board> list = null;
+        //만약 검색할 단어가 파라미터로 넘어오면 else문으로 단어명과 페이지를 보내고 아니면 페이지만 보낸다.
+        //===================== 검색 기능 =================================
+        if (searchKeyword == null) {
+            list = boardService.showAll(pageable);
+        } else {
+            list = boardService.searchKeyword(searchKeyword, pageable);
+        }
+        //================================================================
+//      model.addAttribute("list", boardService.showAll(pageable));
 
         int nowPage = list.getPageable().getPageNumber() + 1; //페이지가 0부터시작해서 +1
         int startPage = Math.max(nowPage - 4, 1);

@@ -3,62 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>게시글 수정페이지</title>
+    <!--CSS 파일 연결-->
+    <link rel="stylesheet" href="/css/boardmodify.css"/>
 </head>
-<style>
-
-    body {
-        background: #7c72a0;
-    }
-
-    .layout {
-        width: 500px;
-        margin : 0 auto;
-    }
-
-    .layout input {
-        width : 100%;
-        height : 30px;
-        box-sizing : boarder-box;
-    }
-
-    .layout textarea {
-        width : 100%;
-        margin-top : 20px;
-        min-height : 500px;
-    }
-
-    .layout button {
-        margin-top : 20px;
-        width : 200px;
-        height : 60px;
-    }
-
-    button {
-        width: 200px;
-        border-radius: 20px;
-        border: none;
-        background: #a57fa5;
-        cursor: pointer;
-    }
-    .modify{
-        height: 60px;
-        padding-top: 15px;
-    }
-    h1{
-        text-align : center;
-        color : white;
-    }
-
-    h2{
-        text-align : center;
-        color : white;
-    }
-
-</style>
 
 <body>
 
-<h1>의엽이 게시판</h1>
+<a th:href="@{/board/list}"><h1>의엽이 게시판</h1></a>
 
 <div class="layout">
     <!--해당 객체의 아이디를 가져간다.-->
@@ -67,7 +18,7 @@
         <input name="title" type="text" th:value="${board.title}">
         <!--textarea태그는 th:text로 데이터 값을 가져온다.-->
         <textarea name="content" th:text="${board.content}"></textarea>
-        <div style="text-align : center">
+        <div>
             <button type="submit"><h2>수정하기</h2></button>
         </div>
     </form>

@@ -1,0 +1,39 @@
+    body {
+        background: #7c72a0;
+    }
+    .title {
+        text-align : center;
+    }
+    .content {
+        text-align : center;
+    }
+    .buttons {
+        text-align : center;
+    }
+    .delete {
+        text-decoration: none;
+    }
+    .modify {
+        text-decoration: none;
+    }
+    .img{
+        text-align : center;
+        padding-bottom: 30px;
+    }
+    h1 {
+        color : white;
+    }
+
+    h2 {
+        color : white;
+    }
+    button {
+        width: 200px;
+        border-radius: 20px;
+        border: none;
+        background: #a57fa5;
+        cursor: pointer;
+    }
+    p {
+        padding-bottom: 25%;
+    }

@@ -1,0 +1,19 @@
+   body {
+        background: #7c72a0;
+        padding-top: 15%;
+    }
+    h1 {
+        text-align : center;
+        color : white;
+    }
+    h2 {
+        text-align : center;
+        color : white;
+    }
+    a button {
+        width: 200px;
+        border-radius: 20px;
+        border: none;
+        background: #a57fa5;
+        cursor: pointer;
+    }

@@ -45,7 +45,6 @@ public class BoardService {
         //=========================================================
         boardRepository.save(board);
     }
-
     //======================================================================
 
     //게시글 전체 조회
@@ -53,6 +52,12 @@ public class BoardService {
     public Page<Board> showAll(Pageable pageable) {
         return boardRepository.findAll(pageable);
         //=====================================================
+    }
+
+    //==================================================================
+    //검색 조회
+    public Page<Board> searchKeyword(String searchKeyword, Pageable pageable) {
+        return boardRepository.findByTitleContaining(searchKeyword, pageable);
     }
 
     //======================================================================

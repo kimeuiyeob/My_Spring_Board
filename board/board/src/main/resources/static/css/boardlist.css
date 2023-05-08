@@ -1,0 +1,67 @@
+    body {
+        background: #7c72a0;
+    }
+    tr:nth-child(even) {
+        background-color: #483d6c;
+        text-align : center;
+    }
+    tr:nth-child(odd) {
+        background-color: #a57fa5;
+        text-align : center;
+    }
+    th {
+        background-color: #342F44;
+        color: white;
+    }
+    .noBorder {
+        border:none !important;
+        color : white;
+        height: 40px;
+    }
+    h1 {
+        text-align : center;
+        color: white;
+    }
+    h2 {
+        text-align : center;
+        color: white;
+    }
+    .layout{
+        display: flex;
+        justify-content: center;
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    button {
+        width: 200px;
+        border-radius: 20px;
+        border: none;
+        background: #a57fa5;
+        cursor: pointer;
+    }
+    .writepage{
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        padding-top: 15px;
+    }
+    strong{
+        font-size: 20px;
+        color: #91367a;
+    }
+    input {
+        border-radius: 10px;
+        height: 40px;
+        width: 280px;
+        border: none;
+    }
+    .search {
+        text-align: center;
+        padding-bottom : 10px
+    }
+    .paging {
+        text-align : center;
+        padding-top: 10px
+    }

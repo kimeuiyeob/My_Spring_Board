@@ -1,48 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>게시물 작성 폼</title>
+    <!--CSS 파일 연결-->
+    <link rel="stylesheet" href="/css/boardwrite.css"/>
 </head>
 
-<style>
-    body {
-        background: #7c72a0;
-    }
-    .layout {
-        width: 500px;
-        margin : 0 auto;
-    }
-
-    .layout input {
-        width : 100%;
-        height : 30px;
-        box-sizing : boarder-box;
-    }
-    .layout textarea {
-        width : 100%;
-        margin-top : 20px;
-        min-height : 500px;
-    }
-    h1 {
-        text-align : center;
-        color : white;
-    }
-    h2 {
-    color : white;
-    }
-    button {
-        width: 200px;
-        border-radius: 20px;
-        border: none;
-        background: #a57fa5;
-        cursor: pointer;
-    }
-
-</style>
-
 <body>
-<h1>의엽이 게시판</h1>
+<a th:href="@{/board/list}"><h1>의엽이 게시판</h1></a>
 <div class="layout">
     <!--form태그로 감싸므로써 button타입을 submit으로 지정해주면 작성하기 버튼을 누를시
     action경로의 컨트롤러를 타게한다, => 방식은 post방식이므로 controller에서도 어노테이션을 postmapping
@@ -54,9 +20,9 @@
         <input name="title" type="text">
         <textarea name="content"></textarea>
         <!--파일 업로드-->
-        <input name="file" type="file">
+        <input class="file" name="file" type="file">
         <!--form태그로 감살씨 버튼 타입을 submit으로 할경우 버튼을 누를시 action컨트롤러로 이동하게된다.-->
-        <div style="text-align : center">
+        <div class="center">
             <button type="submit"><h2>작성하기</h2></button>
         </div>
     </form>
